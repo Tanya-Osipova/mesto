@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="pages/index.css">
+</head>
+<body class="page">
+  <!--****** Popup *****-->
+  <section class="popup">
+    <form class="popup__form">
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <div class="popup__container">
+        <input 
+          class="popup__input-text" 
+          type="text" 
+          id="name-input" 
+          name="name-input" 
+          value="Жак-Ив Кусто">
+        <input 
+          class="popup__input-text" 
+          type="text" 
+          id="job-input" 
+          name="job-input" 
+          value="Исследователь океана">
+        <button class="popup__button-submit" type="submit">Сохранить</button>
+      </div>
+      <button class="popup__button-close"></button>
+    </form>
+  </section>
+  <!-- Header -->
+  <header class="header">
+    <img class="header__logo" src="./images/logo/logo.svg" alt="Логотип">
+  </header>
+  <!-- Main -->
+  <main class="content">
+    <!-- Section profile -->
+    <section class="profile">
+      <div class="profile__container">
+        <img class="profile__image" src="./images/profile/JacquesYvesCousteau.jpg" alt="Жак-Ив Кусто">
+        <div class="profile__info">
+          <div>
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <p class="profile__job">Исследователь океана</p>
+          </div>
+          <div>
+            <button class="profile__button-edit"></button>
+          </div>
+        </div>
+      </div>
+      <button class="profile__button-add"></button>
+    </section>
+    <!-- Section cards -->
+    <section class="cards">
+      <ul class="cards__list">
+        <!-- card 1 -->
+        <li class="cards__item">
+          <img class="cards__image" 
+            src="./images/cards/PitonsStLucia.jpg" 
+            alt="Грос-Питон,Сент-Люсия">
+          <div class="cards__container">
+            <h4 class="cards__title">Грос-Питон</h4>
+            <button class="cards__button-like"></button>
+          </div>
+        </li>
+        <!-- card 2 -->
+        <li class="cards__item">
+          <img class="cards__image" 
+            src="./images/cards/CapeTownSouthAfrica.jpg" 
+            alt="Кейптаун, Южная Африка">
+          <div class="cards__container">
+            <h4 class="cards__title">Кейптаун</h4>
+            <button class="cards__button-like"></button>
+          </div>
+        </li>
+        <!-- card 3 -->
+        <li class="cards__item">
+          <img class="cards__image" 
+            src="./images/cards/GizaEgypt.jpg" 
+            alt="Гиза, Египет">
+          <div class="cards__container">
+            <h4 class="cards__title">Гиза</h4>
+            <button class="cards__button-like"></button>
+          </div>
+        </li>
+        <!-- card 4 -->
+        <li class="cards__item">
+          <img class="cards__image" 
+            src="./images/cards/HawaMahalJaipurIndia.jpg" 
+            alt="Хава-Махал,Джайпур,Индия">
+          <div class="cards__container">
+            <h4 class="cards__title">Хава-Махал</h4>
+            <button class="cards__button-like"></button>
+          </div>
+        </li>
+        <!-- card 5 -->
+        <li class="cards__item">
+          <img class="cards__image" 
+            src="./images/cards/FingalsCaveScotland.jpg"
+            alt="Фингалова пещера, Шотландия">
+          <div class="cards__container">
+            <h4 class="cards__title">Фингалова пещера</h4>
+            <button class="cards__button-like"></button>
+          </div>
+        </li>
+        <!-- card 6 -->
+        <li class="cards__item">
+          <img class="cards__image" 
+            src="./images/cards/VeniceItaly.jpg" 
+            alt="Венеция, Италия">
+          <div class="cards__container">
+            <h4 class="cards__title">Венеция</h4>
+            <button class="cards__button-like"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
+  </footer> 
+   <!-- Javascript  -->
+  <script src="index.js"></script> 
+</body>
+</html>
