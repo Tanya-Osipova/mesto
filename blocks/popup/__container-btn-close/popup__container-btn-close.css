@@ -1,4 +1,4 @@
-.popup__button-close {
+.popup__container-btn-close {
   width: 32px;
   height: 32px;
   border: none;
@@ -12,12 +12,12 @@
   transition: opacity 0.3s linear;
 }
 
-.popup__button-close:hover {
+.popup__container-btn-close:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 600px) {
-  .popup__button-close {
+  .popup__container-btn-close {
     background-image: url("../../../images/vector/mobile-close.svg");
     width: 20px;
     height: 20x;

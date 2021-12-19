@@ -1,4 +1,4 @@
-.profile__button-add {
+.profile__btn-add {
   background: transparent;
   border: none;
   background-image: url("../../../images/vector/add.svg");
@@ -6,18 +6,18 @@
   background-position: center;
   width: 150px;
   height: 50px;
+  padding: 0;
   cursor: pointer;
   transition: opacity 0.3s linear;
 }
 
-.profile__button-add:hover {
+.profile__btn-add:hover {
   opacity: 0.6;
 }
 
-@media screen and (max-width: 600px) {
-  .profile__button-add {
+@media screen and (max-width: 900px) {
+  .profile__btn-add {
     background-image: url("../../../images/vector/mobile-add.svg");
     width: 100%;
-    margin: 36px 0 0 0;
   }
 }

@@ -1,8 +1,7 @@
-.cards__container {
+.cards__info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 25px auto 31px;
-  max-width: 246px;
-  height: 23px;
+  width: 246px;
 }

@@ -1,6 +1,6 @@
 // ==== Popup ====
-const editBtn = document.querySelector(".profile__button-edit");
-const closeBtn = document.querySelector(".popup__button-close");
+const editBtn = document.querySelector(".profile__btn-edit");
+const closeBtn = document.querySelector(".popup__container-btn-close");
 const popup = document.querySelector(".popup");
 
 function openPopup() {
@@ -16,7 +16,7 @@ closeBtn.addEventListener("click", closePopup);
 
 
 // ==== Form ====
-let formElement = document.querySelector(".popup__form");   
+let formElement = document.querySelector(".popup__container");   
 
 function formSubmitHandler (evt) {
 	evt.preventDefault(); 
@@ -36,4 +36,4 @@ function formSubmitHandler (evt) {
   closePopup()
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener("submit", formSubmitHandler);
