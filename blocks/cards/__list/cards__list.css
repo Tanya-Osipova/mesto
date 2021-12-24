@@ -3,9 +3,15 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(12, minmax(auto, 1fr));
-  grid-column: 1 / span 12;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px 17px;
+}
+
+@media screen and (max-width: 930px) {
+  .cards__list {
+    margin: auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (max-width: 600px) {

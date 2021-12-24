@@ -6,7 +6,6 @@
   background-position: center;
   width: 24px;
   height: 24px;
-  margin: 0 0 0 18px;
   cursor: pointer;
   transition: opacity 0.3s linear;
 }
@@ -20,6 +19,5 @@
     background-image: url("../../../images/vector/mobile-edit.svg");
     width: 18px;
     height: 18px;
-    margin-left: 10px;
   }
 }

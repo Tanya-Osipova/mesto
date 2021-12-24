@@ -9,9 +9,9 @@
 <body class="page">
   <!--****** Popup *****-->
   <section class="popup">
-    <form class="popup__container">
-      <fieldset class="popup__container-content">
-        <legend><h3 class="popup__container-title">Редактировать профиль</h3></legend>
+    <div class="popup__container">
+      <h3 class="popup__container-title">Редактировать профиль</h3>
+      <form action="example.php" method="post" name="form-edit" class="popup__container-content">
         <input 
           class="popup__container-input" 
           type="text" 
@@ -25,9 +25,9 @@
           name="job-input" 
           value="Исследователь океана">
         <button class="popup__container-btn-submit" type="submit">Сохранить</button>
-      </fieldset>
-      <button class="popup__container-btn-close"></button>
-    </form>
+      </form>
+      <button class="popup__container-btn-close" type="button"></button>
+    </div>
   </section>
   <!-- Header -->
   <header class="header">
@@ -44,10 +44,12 @@
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__job">Исследователь океана</p>
           </div>
-            <button class="profile__btn-edit"></button>
+          <div>
+            <button class="profile__btn-edit" type="button"></button>
+          </div>
         </div>
       </div>
-      <button class="profile__btn-add"></button>
+      <button class="profile__btn-add" type="button"></button>
     </section>
     <!-- Section cards -->
     <section class="cards">
@@ -56,48 +58,48 @@
         <li class="cards__item">
           <img class="cards__image" src="./images/cards/Байкал.jpg" alt="Байкал">
           <div class="cards__info">
-            <h4 class="cards__title">Байкал</h4>
-            <button class="cards__btn-like"></button>
+            <h2 class="cards__title">Байкал</h2>
+            <button class="cards__btn-like" type="button"></button>
           </div>
         </li>
         <!-- card 2 -->
         <li class="cards__item">
-          <img class="cards__image" src="./images/cards/Домбай.jpg" alt="Домбай">
+          <img class="cards__image" src="./images/cards/Карачаевск.jpg" alt="Карачаево-Черкесская Республика">
           <div class="cards__info">
-            <h4 class="cards__title">Домбай</h4>
-            <button class="cards__btn-like"></button>
+            <h2 class="cards__title">Карачаево-Черкесская Республика</h2>
+            <button class="cards__btn-like" type="button"></button>
           </div>
         </li>
        <!-- card 3 -->
         <li class="cards__item">
           <img class="cards__image" src="./images/cards/Алтай.jpg" alt="Алтай">
           <div class="cards__info">
-            <h4 class="cards__title">Алтай</h4>
-            <button class="cards__btn-like"></button>
+            <h2 class="cards__title">Алтай</h2>
+            <button class="cards__btn-like" type="button"></button>
           </div>
         </li>
         <!-- card 4 -->
         <li class="cards__item">
-          <img class="cards__image" src="./images/cards/Карачаевск.jpg" alt="Карачаевск">
+          <img class="cards__image" src="./images/cards/Домбай.jpg" alt="Домбай">
           <div class="cards__info">
-            <h4 class="cards__title">Карачаевск</h4>
-            <button class="cards__btn-like"></button>
+            <h2 class="cards__title">Домбай</h2>
+            <button class="cards__btn-like" type="button"></button>
           </div>
         </li>
         <!-- card 5 -->
         <li class="cards__item">
           <img class="cards__image" src="./images/cards/Анапа.jpg" alt="Анапа">
           <div class="cards__info">
-            <h4 class="cards__title">Анапа</h4>
-            <button class="cards__btn-like"></button>
+            <h2 class="cards__title">Анапа</h2>
+            <button class="cards__btn-like" type="button"></button>
           </div>
         </li>
         <!-- card 6 -->
         <li class="cards__item">
           <img class="cards__image" src="./images/cards/ГораЭльбрус.jpg" alt="Гора Эльбрус">
           <div class="cards__info">
-            <h4 class="cards__title">Гора Эльбруc</h4>
-            <button class="cards__btn-like"></button>
+            <h2 class="cards__title">Гора Эльбруc</h2>
+            <button class="cards__btn-like" type="button"></button>
           </div>
         </li>
       </ul>

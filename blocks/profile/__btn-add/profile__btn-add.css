@@ -15,7 +15,7 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 600px) {
   .profile__btn-add {
     background-image: url("../../../images/vector/mobile-add.svg");
     width: 100%;
