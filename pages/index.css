@@ -41,6 +41,7 @@
 @import url(../blocks/cards/__info/cards__info.css);
 @import url(../blocks/cards/__title/cards__title.css);
 @import url(../blocks/cards/__btn-like/cards__btn-like.css);
+@import url(../blocks/cards/__btn-trash/cards__btn-trash.css);
 
 /* Footer */
 @import url(../blocks/footer/footer.css);

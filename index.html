@@ -7,26 +7,70 @@
   <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="page">
-  <!--****** Popup *****-->
-  <section class="popup">
-    <div class="popup__container">
+  <!--****** Popup edit *****-->
+  <section class="popup popup_edit">
+    <div class="popup__container popup__container_edit">
       <h3 class="popup__container-title">Редактировать профиль</h3>
-      <form action="example.php" method="post" name="form-edit" class="popup__container-content">
+      <form 
+        class="popup__container-content"
+        action="example.php" 
+        method="post" 
+        name="form-edit"
+      >
         <input 
           class="popup__container-input" 
-          type="text" 
           id="name-input" 
+          type="text" 
           name="name-input" 
-          value="Жак-Ив Кусто">
+          value="Жак-Ив Кусто"
+        >
         <input 
           class="popup__container-input" 
-          type="text" 
           id="job-input" 
+          type="text" 
           name="job-input" 
-          value="Исследователь океана">
-        <button class="popup__container-btn-submit" type="submit">Сохранить</button>
+          value="Исследователь океана"
+        >
+        <button 
+          class="popup__container-btn-submit popup__container-btn-submit_edit" 
+          type="submit">
+            Сохранить
+        </button>
       </form>
       <button class="popup__container-btn-close" type="button"></button>
+    </div>
+  </section>
+  <!--****** Popup add *****-->
+  <section class="popup popup_add">
+    <div class="popup__container popup__container_add">
+      <h3 class="popup__container-title">Новое место</h3>
+      <form 
+        class="popup__container-content"
+        action="example.php" 
+        method="post" 
+        name="form-add" 
+      >
+        <input 
+          class="popup__container-input" 
+          id="img-name-input" 
+          type="text" 
+          name="img-name-input" 
+          placeholder="Название"
+        >
+        <input 
+          class="popup__container-input" 
+          id="img-link-input"
+          type="text"  
+          name="img-link-input" 
+          placeholder="Ссылка на картинку"
+        >
+        <button 
+          class="popup__container-btn-submit popup__container-btn-submit_add" 
+          type="submit">
+            Создать
+        </button>
+      </form>
+      <button class="popup__container-btn-close popup__container-btn-close_add" type="button"></button>
     </div>
   </section>
   <!-- Header -->
@@ -54,54 +98,7 @@
     <!-- Section cards -->
     <section class="cards">
       <ul class="cards__list">
-        <!-- card 1 -->
-        <li class="cards__item">
-          <img class="cards__image" src="./images/cards/Байкал.jpg" alt="Байкал">
-          <div class="cards__info">
-            <h2 class="cards__title">Байкал</h2>
-            <button class="cards__btn-like" type="button"></button>
-          </div>
-        </li>
-        <!-- card 2 -->
-        <li class="cards__item">
-          <img class="cards__image" src="./images/cards/Карачаевск.jpg" alt="Карачаево-Черкесская Республика">
-          <div class="cards__info">
-            <h2 class="cards__title">Карачаево-Черкесская Республика</h2>
-            <button class="cards__btn-like" type="button"></button>
-          </div>
-        </li>
-       <!-- card 3 -->
-        <li class="cards__item">
-          <img class="cards__image" src="./images/cards/Алтай.jpg" alt="Алтай">
-          <div class="cards__info">
-            <h2 class="cards__title">Алтай</h2>
-            <button class="cards__btn-like" type="button"></button>
-          </div>
-        </li>
-        <!-- card 4 -->
-        <li class="cards__item">
-          <img class="cards__image" src="./images/cards/Домбай.jpg" alt="Домбай">
-          <div class="cards__info">
-            <h2 class="cards__title">Домбай</h2>
-            <button class="cards__btn-like" type="button"></button>
-          </div>
-        </li>
-        <!-- card 5 -->
-        <li class="cards__item">
-          <img class="cards__image" src="./images/cards/Анапа.jpg" alt="Анапа">
-          <div class="cards__info">
-            <h2 class="cards__title">Анапа</h2>
-            <button class="cards__btn-like" type="button"></button>
-          </div>
-        </li>
-        <!-- card 6 -->
-        <li class="cards__item">
-          <img class="cards__image" src="./images/cards/ГораЭльбрус.jpg" alt="Гора Эльбрус">
-          <div class="cards__info">
-            <h2 class="cards__title">Гора Эльбруc</h2>
-            <button class="cards__btn-like" type="button"></button>
-          </div>
-        </li>
+       <!-- create cards with js -->
       </ul>
     </section>
   </main>
