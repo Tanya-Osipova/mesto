@@ -10,7 +10,7 @@
   transition: all 0.3s linear;
 }
 
-.cards__btn-like:hover {
+.cards__btn-like:hover,
+.cards__btn-like:focus {
   opacity: 0.6;
-  transform: scale(1.2);
 }

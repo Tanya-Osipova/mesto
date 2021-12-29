@@ -5,9 +5,8 @@
 }
 
 @media screen and (max-width: 930px) {
-  .cards__list {
+  .cards {
     max-width: 580px;
-    margin: auto;
   }
 }
 

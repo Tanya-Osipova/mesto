@@ -1,4 +1,6 @@
-.popup__container-btn-close {
+/* ====================== */
+
+.cards-modal__btn-close {
   width: 32px;
   height: 32px;
   border: none;
@@ -8,17 +10,18 @@
   position: absolute;
   top: -40px;
   right: -40px;
+  color: #fff;
   cursor: pointer;
   transition: opacity 0.3s linear;
 }
 
-.popup__container-btn-close:hover,
-.popup__container-btn-close:focus {
+.cards-modal__btn-close:hover,
+.cards-modal__btn-close:focus {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 600px) {
-  .popup__container-btn-close {
+  .cards-modal__btn-close {
     background-image: url("../../../images/vector/mobile-close.svg");
     width: 20px;
     height: 20px;

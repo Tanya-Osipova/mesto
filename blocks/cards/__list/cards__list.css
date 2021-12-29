@@ -9,7 +9,6 @@
 
 @media screen and (max-width: 930px) {
   .cards__list {
-    margin: auto;
     grid-template-columns: repeat(2, 1fr);
   }
 }

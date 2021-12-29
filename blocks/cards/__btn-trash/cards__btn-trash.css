@@ -7,13 +7,13 @@
   width: 18px;
   height: 19px;
   cursor: pointer;
-  transition: all 0.3s linear;
+  transition: opacity 0.3s linear;
   position: absolute;
   top: 20px;
   right: 20px;
 }
 
-.cards__btn-trash:hover {
+.cards__btn-trash:hover,
+.cards__btn-trash:focus {
   opacity: 0.6;
-  transform: scale(1.2);
 }
