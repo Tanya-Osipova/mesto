@@ -7,14 +7,6 @@
   <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="page">
-  <!--***** Image modal *****-->
-  <figure class="cards-modal">
-    <div class="cards-modal__container"> 
-      <img class="cards-modal__img">
-      <figcaption class="cards-modal__caption"></figcaption>
-      <button class="cards-modal__btn-close" type="button"></button> 
-    </div> 
-  </figure>
   <!--****** Popup edit *****-->
   <section class="popup">
     <div class="popup__container popup__container_edit">
@@ -39,11 +31,7 @@
           name="job-input" 
           value="Исследователь океана"
         >
-        <button 
-          class="popup__container-btn-submit" 
-          type="submit">
-            Сохранить
-        </button>
+        <button class="popup__container-btn-submit" type="submit">Сохранить</button>
       </form>
       <button class="popup__container-btn-close" type="button"></button>
     </div>
@@ -72,14 +60,18 @@
           name="img-link-input" 
           placeholder="Ссылка на картинку"
         >
-        <button 
-          class="popup__container-btn-submit" 
-          type="submit">
-            Создать
-        </button>
+        <button class="popup__container-btn-submit" type="submit">Создать</button>
       </form>
       <button class="popup__container-btn-close" type="button"></button>
     </div>
+  </section>
+  <!--***** Image modal *****-->
+  <section class="popup">
+    <figure class="cards-modal__container popup__container_image">
+      <img class="cards-modal__img">
+      <figcaption class="cards-modal__caption"></figcaption>
+      <button class="popup__container-btn-close" type="button"></button>
+    </figure>
   </section>
   <!-- Header -->
   <header class="header">

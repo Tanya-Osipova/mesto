@@ -34,44 +34,36 @@ const initialCards = [
 const cardsList = document.querySelector('.cards__list');
 initialCards.forEach(createCard);
 
-// ==== Modal image ====
-const cardsModal = document.querySelector(".cards-modal");
-const cardsModalImg = document.querySelector(".cards-modal__img");
-const cardsModalCaption = document.querySelector(".cards-modal__caption");
-const cardsModalCloseBtn = document.querySelector(".cards-modal__btn-close");
-
-function closeModalImage() {
-  cardsModal.classList.remove('cards-modal_opened');
-}
-
-cardsModalCloseBtn.addEventListener("click", closeModalImage);
-
 // ==== Card template ====
 function createCard(element) {
   const cardTemplate = document.querySelector('#cards__item-template').content;
   const cardElement = cardTemplate.querySelector('.cards__item').cloneNode(true);
+  const cardsModalImg = document.querySelector(".cards-modal__img");
+  const cardsModalCaption = document.querySelector(".cards-modal__caption");
+  // image popup container
+  const imagePopup = document.querySelector('.popup__container_image');
 
   cardElement.querySelector('.cards__image').src = element.link;
   cardElement.querySelector('.cards__image').alt = element.alt;
   cardElement.querySelector('.cards__title').textContent = element.name;
   
-  //like
+  // like
   cardElement.querySelector('.cards__btn-like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('cards__btn-like_active');
   });
 
-  //delete 
+  // delete 
   cardElement.querySelector('.cards__btn-trash').addEventListener('click', function (evt) {
     evt.target.closest('.cards__item').remove();
   });
 
   // modal image
   cardElement.querySelector('.cards__image').addEventListener('click', function (evt) {
-    cardsModal.classList.add('cards-modal_opened');
-    cardsModalImg.src = element.link;
-    cardsModalCaption.textContent = element.alt;
+    cardsModalImg.src = evt.target.src;
+    cardsModalCaption.textContent = evt.target.alt;
+    openPopup(imagePopup); 
   });
-  
+
   cardsList.prepend(cardElement);
 }
 
