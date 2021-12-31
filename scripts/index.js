@@ -40,7 +40,7 @@ function createCard(element) {
   const cardElement = cardTemplate.querySelector('.cards__item').cloneNode(true);
   const popupImg = document.querySelector(".popup__container-modal-image");
   const popupCaption = document.querySelector(".popup__container-caption");
-  const imagePopup = document.querySelector('.popup__container_image');
+  const imagePopup = document.querySelector('.popup__container-image');
 
   cardElement.querySelector('.cards__image').src = element.link;
   cardElement.querySelector('.cards__image').alt = element.alt;
