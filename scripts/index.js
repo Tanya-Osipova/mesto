@@ -38,9 +38,8 @@ initialCards.forEach(createCard);
 function createCard(element) {
   const cardTemplate = document.querySelector('#cards__item-template').content;
   const cardElement = cardTemplate.querySelector('.cards__item').cloneNode(true);
-  const cardsModalImg = document.querySelector(".cards-modal__img");
-  const cardsModalCaption = document.querySelector(".cards-modal__caption");
-  // image popup container
+  const popupImg = document.querySelector(".popup__container-modal-image");
+  const popupCaption = document.querySelector(".popup__container-caption");
   const imagePopup = document.querySelector('.popup__container_image');
 
   cardElement.querySelector('.cards__image').src = element.link;
@@ -59,8 +58,8 @@ function createCard(element) {
 
   // modal image
   cardElement.querySelector('.cards__image').addEventListener('click', function (evt) {
-    cardsModalImg.src = evt.target.src;
-    cardsModalCaption.textContent = evt.target.alt;
+    popupImg.src = evt.target.src;
+    popupCaption.textContent = evt.target.alt;
     openPopup(imagePopup); 
   });
 

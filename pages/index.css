@@ -8,20 +8,16 @@
 /* Popup */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_image/popup_image.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__container/_image/popup__container_image.css);
 @import url(../blocks/popup/__container-content/popup__container-content.css);
 @import url(../blocks/popup/__container-title/popup__container-title.css);
 @import url(../blocks/popup/__container-input/popup__container-input.css);
 @import url(../blocks/popup/__container-btn-submit/popup__container-btn-submit.css);
 @import url(../blocks/popup/__container-btn-close/popup__container-btn-close.css);
-
-/* Modal Image */
-@import url(../blocks/cards-modal/cards-modal.css);
-@import url(../blocks/cards-modal/_opened/cards-modal_opened.css);
-@import url(../blocks/cards-modal/__container/cards-modal__container.css);
-@import url(../blocks/cards-modal/__img/cards-modal__img.css);
-@import url(../blocks/cards-modal/__caption/cards-modal__caption.css);
-@import url(../blocks/cards-modal/__btn-close/cards-modal__btn-close.css);
+@import url(../blocks/popup/__container-caption/popup__container-caption.css);
+@import url(../blocks/popup/__container-modal-image/popup__container-modal-image.css);
 
 /* Header */
 @import url(../blocks/header/header.css);
