@@ -1,7 +1,6 @@
 const renderCard = (data) => {
   const cardsList = document.querySelector('.cards__list');
   cardsList.prepend(createCard(data));
-  
 }
 
 initialCards.forEach(renderCard);
@@ -14,6 +13,7 @@ function createCard(cardData) {
   const popupImage = document.querySelector(".popup__container-modal-image");
   const popupCaption = document.querySelector(".popup__container-caption");
   const imagePopup = document.querySelector('.popup__container-image');
+
   cardsImage.src = cardData.link;
   cardsImage.alt = cardData.alt;
   cardElement.querySelector('.cards__title').textContent = cardData.name;
@@ -32,7 +32,7 @@ function createCard(cardData) {
   cardsImage.addEventListener('click', function (evt) {
     popupImage.src = cardData.link;
     popupImage.alt = cardData.alt;
-    popupCaption.textContent = cardData.alt;
+    popupCaption.textContent = cardData.name;
     openPopup(imagePopup); 
   });
   return cardElement;
@@ -87,7 +87,7 @@ formEdit.addEventListener('submit', handleEditProfileForm);
 
 // ==== Form add ====
 const formAdd = document.querySelector('.popup__container_add');  
-const resetFormAdd = document.querySelector('#form-add');  
+const formAddReset = document.querySelector('#form-add');  
 const imageNameInput = document.querySelector('#img-name-input'); 
 const imageLinkInput = document.querySelector('#img-link-input');    
 
@@ -102,7 +102,7 @@ function handleAddPlaceForm (evt) {
 
   renderCard(newCard)
   closePopup()
-  resetFormAdd.reset();
+  formAddReset.reset();
 }
 
 formAdd.addEventListener('submit', handleAddPlaceForm);
