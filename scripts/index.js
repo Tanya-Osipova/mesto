@@ -87,7 +87,7 @@ formEdit.addEventListener('submit', handleEditProfileForm);
 
 // ==== Form add ====
 const formAdd = document.querySelector('.popup__container_add');  
-const formAddReset = document.querySelector('#form-add');  
+const formAddReset = document.forms.add;  
 const imageNameInput = document.querySelector('#img-name-input'); 
 const imageLinkInput = document.querySelector('#img-link-input');    
 

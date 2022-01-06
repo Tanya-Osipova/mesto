@@ -15,7 +15,8 @@
         class="popup__container-content"
         action="example.php" 
         method="post" 
-        name="form-edit"
+        name="edit"
+        novalidate
       >
         <input 
           class="popup__container-input" 
@@ -23,15 +24,23 @@
           type="text" 
           name="name-input" 
           value="Жак-Ив Кусто"
+          minlength="2"
+          maxlength="40"
+          required
         >
+        <span class="name-input-error popup__container-input-error"></span>
         <input 
           class="popup__container-input" 
           id="job-input" 
           type="text" 
           name="job-input" 
           value="Исследователь океана"
+          minlength="2"
+          maxlength="200"
+          required
         >
-        <button class="popup__container-btn-submit" type="submit">Сохранить</button>
+        <span class="job-input-error popup__container-input-error"></span>
+        <button class="popup__container-btn-submit" type="submit" disabled>Сохранить</button>
       </form>
       <button class="popup__container-btn-close" type="button"></button>
     </div>
@@ -42,10 +51,10 @@
       <h3 class="popup__container-title">Новое место</h3>
       <form 
         class="popup__container-content"
-        id="form-add"
         action="example.php" 
         method="post" 
-        name="form-add" 
+        name="add" 
+        novalidate
       >
         <input 
           class="popup__container-input" 
@@ -53,15 +62,21 @@
           type="text" 
           name="img-name-input" 
           placeholder="Название"
+          minlength="2"
+          maxlength="30"
+          required
         >
+        <span class="img-name-input-error popup__container-input-error"></span>
         <input 
           class="popup__container-input" 
           id="img-link-input"
-          type="text"  
+          type="url"  
           name="img-link-input" 
           placeholder="Ссылка на картинку"
+          required
         >
-        <button class="popup__container-btn-submit" type="submit">Создать</button>
+        <span class="img-link-input-error popup__container-input-error"></span>
+        <button class="popup__container-btn-submit" type="submit" disabled>Создать</button>
       </form>
       <button class="popup__container-btn-close" type="button"></button>
     </div>
@@ -123,5 +138,6 @@
   <!-- Javascript  -->
   <script src="scripts/cards.js"></script>
   <script src="scripts/index.js"></script> 
+  <script src="scripts/validate.js"></script>
 </body>
 </html>

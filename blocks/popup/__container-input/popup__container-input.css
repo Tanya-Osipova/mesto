@@ -2,6 +2,7 @@
   box-sizing: border-box;
   max-width: 100%;
   min-height: 27px;
+  outline: none;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-top: 30px;
@@ -10,11 +11,23 @@
   font-size: 14px;
   line-height: 17px;
 }
-
+/* 
 .popup__container-input:focus {
   outline-color: 1px solid rgba(0, 0, 0, 0.2);
-}
+} */
 
 .popup__container-input::placeholder {
   color: #c4c4c4;
+}
+/* ===================================================== */
+.popup__container-input_type_error {
+  border-bottom: 1px solid #ff0000;
+}
+
+.popup__container-input-error {
+  max-width: 100%;
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
 }
