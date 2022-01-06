@@ -14,7 +14,10 @@
 @import url(../blocks/popup/__container-content/popup__container-content.css);
 @import url(../blocks/popup/__container-title/popup__container-title.css);
 @import url(../blocks/popup/__container-input/popup__container-input.css);
+@import url(../blocks/popup/__container-input/_type/popup__container-input_type_error.css);
+@import url(../blocks/popup/__container-input-error/popup__container-input-error.css);
 @import url(../blocks/popup/__container-btn-submit/popup__container-btn-submit.css);
+@import url(../blocks/popup/__container-btn-submit/_disabled/container-btn-submit_disabled.css);
 @import url(../blocks/popup/__container-btn-close/popup__container-btn-close.css);
 @import url(../blocks/popup/__container-caption/popup__container-caption.css);
 @import url(../blocks/popup/__container-modal-image/popup__container-modal-image.css);

@@ -54,6 +54,19 @@ function closePopup() {
   popup.classList.remove('popup_opened');
 }
 
+function handleKey(event) {
+  if (event.key === 'Escape') {
+    closePopup();
+  }
+}
+
+function handleClick(event) {
+  const popup = document.querySelector('.popup_opened');
+  if (event.target === popup) {
+    closePopup();
+  }
+}
+
 editButton.addEventListener('click', () => {
   openPopup(editPopup); 
 });
@@ -65,6 +78,9 @@ addButton.addEventListener('click', () => {
 closeButtons.forEach(button => {
   button.addEventListener('click', closePopup);
 });
+
+document.addEventListener('keydown', handleKey);
+document.addEventListener('click', handleClick);
 
 
 // ==== Form edit ====
