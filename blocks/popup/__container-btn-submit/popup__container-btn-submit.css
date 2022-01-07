@@ -9,7 +9,7 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  margin-top: 48px;
+  margin-top: 15px;
   cursor: pointer;
   transition: opacity 0.3s linear;
 }
@@ -20,7 +20,7 @@
 
 @media screen and (max-width: 600px) {
   .popup__container-btn-submit {
-    margin-top: 40px;
+    margin-top: 5px;
     font-size: 14px;
     line-height: 17px;
   }

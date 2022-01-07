@@ -18,17 +18,17 @@ function createCard(cardData) {
   cardsImage.alt = cardData.alt;
   cardElement.querySelector('.cards__title').textContent = cardData.name;
   
-  // like
+  // Like
   cardElement.querySelector('.cards__btn-like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('cards__btn-like_active');
   });
 
-  // delete 
+  // Delete 
   cardElement.querySelector('.cards__btn-trash').addEventListener('click', function (evt) {
     evt.target.closest('.cards__item').remove();
   });
 
-  // modal image
+  // Modal image
   cardsImage.addEventListener('click', function (evt) {
     popupImage.src = cardData.link;
     popupImage.alt = cardData.alt;
@@ -54,12 +54,14 @@ function closePopup() {
   popup.classList.remove('popup_opened');
 }
 
-function handleKey(event) {
+// Close popup on esc key 
+function handleEscapeKey(event) {
   if (event.key === 'Escape') {
     closePopup();
   }
 }
 
+// Close the popup when the user clicks anywhere outside of it
 function handleClick(event) {
   const popup = document.querySelector('.popup_opened');
   if (event.target === popup) {
@@ -79,7 +81,7 @@ closeButtons.forEach(button => {
   button.addEventListener('click', closePopup);
 });
 
-document.addEventListener('keydown', handleKey);
+document.addEventListener('keydown', handleEscapeKey);
 document.addEventListener('click', handleClick);
 
 
