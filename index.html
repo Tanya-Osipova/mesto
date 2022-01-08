@@ -8,7 +8,7 @@
 </head>
 <body class="page">
   <!--****** Popup edit *****-->
-  <section class="popup">
+  <div class="popup popup_edit">
     <div class="popup__container popup__container_edit">
       <h3 class="popup__container-title">Редактировать профиль</h3>
       <form 
@@ -40,13 +40,18 @@
           required
         >
         <span class="job-input-error popup__container-input-error"></span>
-        <button class="popup__container-btn-submit" type="submit" disabled>Сохранить</button>
+        <button 
+          class="popup__container-btn-submit popup__container-btn-submit_edit" 
+          type="submit" 
+          disabled>
+          Сохранить
+      </button>
       </form>
       <button class="popup__container-btn-close" type="button"></button>
     </div>
-  </section>
+  </div>
   <!--****** Popup add *****-->
-  <section class="popup">
+  <div class="popup popup_add">
     <div class="popup__container popup__container_add">
       <h3 class="popup__container-title">Новое место</h3>
       <form 
@@ -76,19 +81,24 @@
           required
         >
         <span class="img-link-input-error popup__container-input-error"></span>
-        <button class="popup__container-btn-submit" type="submit" disabled>Создать</button>
+        <button 
+          class="popup__container-btn-submit popup__container-btn-submit_add" 
+          type="submit" 
+          disabled>
+          Создать
+      </button>
       </form>
       <button class="popup__container-btn-close" type="button"></button>
     </div>
-  </section>
+  </div>
   <!--***** Image modal *****-->
-  <section class="popup popup_image">
+  <div class="popup popup_image">
     <figure class="popup__container-image">
       <img class="popup__container-modal-image">
       <figcaption class="popup__container-caption"></figcaption>
       <button class="popup__container-btn-close" type="button"></button>
     </figure>
-  </section>
+  </div>
   <!-- Header -->
   <header class="header">
     <img class="header__logo" src="./images/logo/logo.svg" alt="Логотип">
