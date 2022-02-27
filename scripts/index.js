@@ -1,3 +1,44 @@
+import Card from './Card.js'; 
+import FormValidator from './FormValidator.js';
+ 
+// Card List
+const initialCards = [
+  {
+    title: 'Байкал',
+    image: 'https://media.istockphoto.com/photos/baikal-landscape-with-an-old-railway-bridge-picture-id623509532?b=1&k=20&m=623509532&s=170667a&w=0&h=opkBV0QoMbVGGKeW1F30odXBxyRaS8cnivSWwm-RQpo=',
+  },
+  {
+    title: 'Гора Эльбрус',
+    image: 'https://media.istockphoto.com/photos/pink-sunrise-above-mount-elbrus-is-the-highest-and-most-prominent-in-picture-id1327300920?b=1&k=20&m=1327300920&s=170667a&w=0&h=Ooczpxpy_GY_LzdfYBG-F7unRQohTdpEi0Teohxkoio=',
+  },
+  {
+    title: 'Алтай',
+    image: 'https://media.istockphoto.com/photos/sunny-evening-on-lake-teletskoye-picture-id1353240964?b=1&k=20&m=1353240964&s=170667a&w=0&h=Os1zdwJQTP9AXW2reAfRJLFwP9Cw0bEB6L5pLBaSxf0=',
+  },
+  {
+    title: 'Москва',
+    image: 'https://media.istockphoto.com/photos/st-basils-cathedral-picture-id502362300?b=1&k=20&m=502362300&s=170667a&w=0&h=uxk8vG5ICAx-sXMGCrZmmuu0712edTEVzeiySuajnLQ=',
+  },
+  {
+    title: 'Кольский Полуостров',
+    image: 'https://media.istockphoto.com/photos/northern-lights-on-the-kola-peninsula-picture-id651146176?b=1&k=20&m=651146176&s=170667a&w=0&h=8q_4tEYhlEuPQc34lY8OYOSXEsAHnJdNRjPTaaLRz08=',
+  },
+  {
+    title: 'Петропавловск-Камчатский',
+    image: 'https://media.istockphoto.com/photos/panoramic-view-of-the-city-petropavlovskkamchatsky-and-volcanoes-picture-id1316952893?b=1&k=20&m=1316952893&s=170667a&w=0&h=fOjtgi0hC_YdUX1HX5UOm1XeoGbriWGbJMFuyqU9vYk=',
+  }
+];
+
+// Form validator selectors
+const formList = Array.from(document.querySelectorAll('.popup__container-content'));
+const selector = {
+  inputSelector: '.popup__container-input',
+  submitButtonSelector: '.popup__container-btn-submit',
+  inactiveButtonClass: 'container-btn-submit_disabled',
+  inputErrorClass: 'popup__container-input_type_error',
+  errorClass: 'popup__container-input-error_active'
+}; 
+
 // Popup selectors
 const closeButtons = document.querySelectorAll('.popup__container-btn-close');
 const editButton = document.querySelector('.profile__btn-edit');
@@ -24,58 +65,6 @@ const formAddReset = document.forms.add;
 const imageNameInput = document.querySelector('#img-name-input'); 
 const imageLinkInput = document.querySelector('#img-link-input');  
 
-// ==== Draw cards ====
-const renderCard = (data) => {
-  const cardsList = document.querySelector('.cards__list');
-  cardsList.prepend(createCard(data));
-}
-
-initialCards.forEach(renderCard);
-
-// ==== Card template ====
-function createCard(cardData) {
-  const cardTemplate = document.querySelector('#cards__item-template').content;
-  const cardElement = cardTemplate.querySelector('.cards__item').cloneNode(true);
-  const cardImage = cardElement.querySelector('.cards__image');
-  const popupImage = document.querySelector('.popup__container-modal-image');
-  const popupCaption = document.querySelector('.popup__container-caption');
-  const imagePopup = document.querySelector('.popup_image');
-
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.name;
-  cardElement.querySelector('.cards__title').textContent = cardData.name;
-  
-  // Like
-  cardElement.querySelector('.cards__btn-like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('cards__btn-like_active');
-  });
-
-  // Delete 
-  cardElement.querySelector('.cards__btn-trash').addEventListener('click', function (evt) {
-    evt.target.closest('.cards__item').remove();
-  });
-
-  // Modal image
-  cardImage.addEventListener('click', function () {
-    popupImage.src = cardData.link;
-    popupImage.alt = cardData.name;
-    popupCaption.textContent = cardData.name;
-    openPopup(imagePopup); 
-  });
-  return cardElement;
-}
-
-// ==== Popups ====
-
-// Remove error message
-function removeErrorMessage() {
-  errorTexts.forEach(errorText => {
-    errorText.textContent = '';
-  });
-  errorLines.forEach(errorLine => {
-    errorLine.classList.remove('popup__container-input_type_error');
-  });
-}
 
 // Open popup
 function openPopup(popupElement) {
@@ -114,6 +103,16 @@ closeButtons.forEach(button => {
   });
 });
 
+// Remove error message
+function removeErrorMessage() {
+  errorTexts.forEach(errorText => {
+    errorText.textContent = '';
+  });
+  errorLines.forEach(errorLine => {
+    errorLine.classList.remove('popup__container-input_type_error');
+  });
+}
+
 // Open edit profile
 editButton.addEventListener('click', () => {
   nameInput.value = userName.textContent;
@@ -143,8 +142,8 @@ formEdit.addEventListener('submit', handleEditProfileForm);
 // ==== Form add ====
 function handleAddPlaceForm () {
   const newCard = {
-    name: imageNameInput.value,
-    link: imageLinkInput.value
+    title: imageNameInput.value,
+    image: imageLinkInput.value
   }
   renderCard(newCard);
   closePopup(addPopup);
@@ -154,3 +153,22 @@ function handleAddPlaceForm () {
 }
 
 formAdd.addEventListener('submit', handleAddPlaceForm);
+
+// ===== Create new cards =====
+function renderCard(cardItem) {
+  const card = new Card(cardItem, '.card-template_type_default');
+  const cardElement = card.generateCard();
+
+  document.querySelector('.cards__list').prepend(cardElement);
+}
+
+initialCards.forEach((cardItem) => {
+  renderCard(cardItem);
+});
+
+
+// ===== Validate form =====
+formList.forEach((formElement) => {
+  const form = new FormValidator(selector, formElement);
+  form.enableValidation();
+});
