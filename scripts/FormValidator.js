@@ -6,10 +6,27 @@ export default class FormValidator {
     this._submitButton = data.submitButtonSelector;
     this._inactiveButton = data.inactiveButtonClass;
     this._error = data.errorClass;
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputField));
   }
 
   enableValidation() {
     this._setEventListeners();
+  }
+  
+  resetError() {
+    this._inputList.forEach(inputElement => {
+      this._hideInputError(inputElement)
+    });
+  }
+
+  blockSubmitButton(buttonElement) {
+    buttonElement.setAttribute('disabled', true);
+    buttonElement.classList.add(this._inactiveButton);
+  }
+
+  unblockSubmitButton(buttonElement) {
+    buttonElement.removeAttribute('disabled');
+    buttonElement.classList.remove(this._inactiveButton);
   }
   
   // Show error
@@ -31,22 +48,11 @@ export default class FormValidator {
   };
 
   // Find invalid input
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   };
-
-  // Change button state
-  _setSubmitButtonState(inputList, buttonElement) {
-    if (this._hasInvalidInput(inputList)) {
-      buttonElement.setAttribute('disabled', true);
-      buttonElement.classList.add(this._inactiveButton);
-    } else {
-      buttonElement.removeAttribute('disabled');
-      buttonElement.classList.remove(this._inactiveButton);
-    }
-  }
 
   // Check validity
   _checkInputValidity(inputElement) {
@@ -63,15 +69,19 @@ export default class FormValidator {
       evt.preventDefault();
     });
 
-    const inputList = Array.from(this._form.querySelectorAll(this._inputField));
     const buttonElement = this._form.querySelector(this._submitButton);
 
-    this._setSubmitButtonState(inputList, buttonElement);
+    this.blockSubmitButton(buttonElement);
 
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._setSubmitButtonState(inputList, buttonElement); 
+        
+        if (this._hasInvalidInput(this._inputList)) {
+          this.blockSubmitButton(buttonElement);
+        } else {
+          this.unblockSubmitButton(buttonElement);
+        }
       });
     });
   };
