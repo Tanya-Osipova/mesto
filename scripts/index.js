@@ -84,21 +84,22 @@ closeButtons.forEach(button => {
 });
 
 // Open edit profile
-editButton.addEventListener('click', () => {
+function openEditProfile() {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent;
   editFormValidator.resetError();
   editFormValidator.unblockSubmitButton(submitButtonEdit);
   openPopup(editPopup);
-  
-});
+}
+editButton.addEventListener('click', openEditProfile);
 
 // Open add place
-addButton.addEventListener('click', () => {
+function openAddPlace() {
   addFormValidator.resetError();
   formAddReset.reset();
   openPopup(addPopup); 
-});
+}
+addButton.addEventListener('click', openAddPlace);
 
 // ==== Form edit ====
 function handleEditProfileForm () {

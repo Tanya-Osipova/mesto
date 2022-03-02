@@ -1,9 +1,8 @@
-import { openPopup, closePopup } from "./index.js";
+import { openPopup } from "./index.js";
 
 const popupElement = document.querySelector('.popup_image');
 const popupImage = document.querySelector('.popup__container-modal-image');
 const popupCaption = document.querySelector('.popup__container-caption');
-const popupCloseButton = document.querySelector('.popup__container-btn-close_image');
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -49,13 +48,6 @@ export default class Card {
       popupCaption.textContent = this._title;
       openPopup(popupElement);
     });
-    
-    // close popup
-    popupCloseButton.addEventListener('click', () => {
-      popupImage.src = '';
-      popupCaption.textContent = '';
-      closePopup(this._element);
-    });
   }  
   
   // handle like
@@ -65,7 +57,6 @@ export default class Card {
 
   // handle delete
   _handleDelete() {
-    // this._element = null;   NOT WORKING
     this._element.remove();
   }
 }
