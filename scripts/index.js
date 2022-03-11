@@ -1,9 +1,8 @@
-import Card from './Card.js'; 
-import FormValidator from './FormValidator.js';
-import { initialCards } from './initialCards.js';
-
-// Cards
-const cardList = document.querySelector('.cards__list');
+import Card from '../components/Card.js'; 
+import Section from '../components/Section.js'
+import FormValidator from '../components/FormValidator.js';
+import { initialCards } from '../utils/constants.js';
+import { cardList } from '../utils/constants.js';
 
 // Form validator selectors
 const editForm = document.querySelector('.popup__container-content_edit');
@@ -126,6 +125,7 @@ function handleAddPlaceForm () {
 formAdd.addEventListener('submit', handleAddPlaceForm);
 
 // ===== Create new cards =====
+/*
 function renderCard(cardItem) {
   const card = new Card(cardItem, '.card-template_type_default');
   return card.generateCard();
@@ -135,4 +135,19 @@ initialCards.forEach((cardItem) => {
   const card = renderCard(cardItem);
   cardList.prepend(card);
 });
+*/
 
+// Section.js
+const cardsList = new Section({
+    items: initialCards,
+    renderer: (cardItem) => { 
+      const card = new Card(cardItem, '.card-template_type_default');
+      const cardElement = card.generateCard();
+
+      cardsList.addItem(cardElement);
+    }
+  },
+  cardList
+);
+
+cardsList.renderItems(); 

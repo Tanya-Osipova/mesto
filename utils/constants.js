@@ -1,4 +1,4 @@
-// Card List
+// Card list
 export const initialCards = [
   {
     title: 'Байкал',
@@ -25,3 +25,11 @@ export const initialCards = [
     image: 'https://media.istockphoto.com/photos/panoramic-view-of-the-city-petropavlovskkamchatsky-and-volcanoes-picture-id1316952893?b=1&k=20&m=1316952893&s=170667a&w=0&h=fOjtgi0hC_YdUX1HX5UOm1XeoGbriWGbJMFuyqU9vYk=',
   }
 ];
+
+// Card.js constants
+export const popupElement = document.querySelector('.popup_image');
+export const popupImage = document.querySelector('.popup__container-modal-image');
+export const popupCaption = document.querySelector('.popup__container-caption');
+
+// Cards
+export const cardList = '.cards__list';

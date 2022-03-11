@@ -1,8 +1,6 @@
-import { openPopup } from "./index.js";
+import { openPopup } from "../scripts/index.js";
+import { popupElement, popupImage, popupCaption } from "../utils/constants.js"
 
-const popupElement = document.querySelector('.popup_image');
-const popupImage = document.querySelector('.popup__container-modal-image');
-const popupCaption = document.querySelector('.popup__container-caption');
 
 export default class Card {
   constructor(data, cardSelector) {
