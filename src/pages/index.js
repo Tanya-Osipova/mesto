@@ -1,8 +1,10 @@
+// CSS
+import './index.css';
+
 // import COMPONENTS
 import Card from '../components/Card.js'; 
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
-import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import FormValidator from '../components/FormValidator.js';
@@ -14,13 +16,7 @@ import { cardList } from '../utils/constants.js';
 import { editForm, addForm, selector } from '../utils/constants.js';
 
 // Popup selectors
-import { closeButtons, editButton, addButton, submitButtonAdd, submitButtonEdit, editPopup, addPopup } from '../utils/constants.js';
-
-// Edit profile form selectors
-import { formEdit, nameInput, jobInput, userName, userJob } from '../utils/constants.js';
-
-// Add place form selectors
-import { formAdd, formAddReset, imageNameInput, imageLinkInput } from '../utils/constants.js';
+import { editButton, addButton, submitButtonAdd, submitButtonEdit } from '../utils/constants.js';
 
 
 // ===== Validate form =====

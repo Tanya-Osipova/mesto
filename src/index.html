@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="page">
   <!--****** Popup edit *****-->
@@ -101,14 +100,14 @@
   </div>
   <!-- Header -->
   <header class="header">
-    <img class="header__logo" src="./images/logo/logo.svg" alt="Логотип">
+    <img class="header__logo" src="<%=require('./images/logo/logo.svg')%>" alt="Логотип">
   </header>
   <!-- Main -->
   <main class="content">
     <!-- Section profile -->
     <section class="profile">
       <div class="profile__container">
-        <img class="profile__image" src="./images/profile/JacquesYvesCousteau.jpg" alt="Жак-Ив Кусто">
+        <img class="profile__image" src="<%=require('./images/profile/JacquesYvesCousteau.jpg')%>" alt="Жак-Ив Кусто">
         <div class="profile__info">
           <div>
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -144,8 +143,5 @@
       </div>
     </li>
   </template>
-
-  <!-- Javascript  -->
-  <script type="module" src="pages/index.js"></script> 
 </body>
 </html>
