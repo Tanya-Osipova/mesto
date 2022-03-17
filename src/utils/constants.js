@@ -33,3 +33,37 @@ export const popupCaption = document.querySelector('.popup__container-caption');
 
 // Cards
 export const cardList = '.cards__list';
+
+ 
+// Popup selectors
+export const closeButtons = document.querySelectorAll('.popup__container-btn-close');
+export const editButton = document.querySelector('.profile__btn-edit');
+export const addButton = document.querySelector('.profile__btn-add');
+export const submitButtonAdd = document.querySelector('.popup__container-btn-submit_add');
+export const submitButtonEdit = document.querySelector('.popup__container-btn-submit_edit');
+export const editPopup = document.querySelector('.popup_edit');
+export const addPopup = document.querySelector('.popup_add');
+
+// Edit profile form selectors
+export const formEdit = document.querySelector('.popup__container_edit');  
+export const nameInput = document.querySelector('#name-input'); 
+export const jobInput = document.querySelector('#job-input');   
+export const userName = document.querySelector('.profile__name');
+export const userJob = document.querySelector('.profile__job'); 
+
+// Add place form selectors
+export const formAdd = document.querySelector('.popup__container_add');  
+export const formAddReset = document.forms.add;  
+export const imageNameInput = document.querySelector('#img-name-input'); 
+export const imageLinkInput = document.querySelector('#img-link-input'); 
+
+// Form validator selectors
+export const editForm = document.querySelector('.popup__container-content_edit');
+export const addForm = document.querySelector('.popup__container-content_add');
+export const selector = {
+  inputSelector: '.popup__container-input',
+  submitButtonSelector: '.popup__container-btn-submit',
+  inactiveButtonClass: 'container-btn-submit_disabled',
+  inputErrorClass: 'popup__container-input_type_error',
+  errorClass: 'popup__container-input-error_active'
+}; 
