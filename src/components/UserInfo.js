@@ -10,7 +10,7 @@ export default class UserInfo {
       job: this._userJobSelector.textContent
     }
   }
-
+  
   setUserInfo(name, job) {
     this._userNameSelector.textContent = name;
     this._userJobSelector.textContent = job;
