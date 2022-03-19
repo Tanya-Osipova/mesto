@@ -10,7 +10,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import FormValidator from '../components/FormValidator.js';
 
 // import CONSTANTS
-import { initialCards } from '../utils/constants.js';
+import { initialCards, jobInput, nameInput } from '../utils/constants.js';
 import { cardList } from '../utils/constants.js';
 
 // Form validator selectors
@@ -21,41 +21,52 @@ import { editButton, addButton, submitButtonAdd, submitButtonEdit } from '../uti
 
 
 // FormValidator.js
-const editFormValidator = new FormValidator(selector, editForm);
-const addFormValidator = new FormValidator(selector, addForm);
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+
+const formValidator = {
+  edit: new FormValidator(selector, editForm),
+  add: new FormValidator(selector, addForm)
+}
+formValidator.edit.enableValidation();
+formValidator.add.enableValidation();
 
 
 // PopupWithImage.js
 const imagePopup = new PopupWithImage('.popup_image');
 
+// handleCardClick
+function handleCardClick(title, image,alt) {
+  imagePopup.open({title:title, image:image, alt:alt})
+}
+// create card
+function createCard(item) {
+  const card = new Card(item, '.card-template_type_default', handleCardClick);
+  return card.generateCard();
+}
+
 // Section.js
 const cardsList = new Section({
     items: initialCards,
     renderer: (cardItem) => { 
-      const card = new Card(cardItem, '.card-template_type_default', imagePopup);
-      const cardElement = card.generateCard();
-
-      cardsList.addItem(cardElement);
+      const card = createCard(cardItem)
+      cardsList.addItem(card);
     }
   },
   cardList
 );
-
+// initial add cards
 cardsList.renderItems(); 
 
 
 // PopupWithForm.js
 const popupFormAdd = new PopupWithForm ('.popup_add', (data) => {
-    const newCard = {
-      title: data[0],
-      image: data[1]
-    };
-    const card = new Card(newCard, '.card-template_type_default',imagePopup);
-    const cardElement = card.generateCard();
-    cardsList.addItem(cardElement);
-    addFormValidator.blockSubmitButton(submitButtonAdd);
+  const newCard = {
+    title: data['img-name-input'],
+    image: data['img-link-input'],
+    alt: data['img-name-input']
+  };
+  const card = createCard(newCard)
+  cardsList.addItem(card);
+  formValidator.add.blockSubmitButton();
 });
 
 addButton.addEventListener('click', () => popupFormAdd.open());
@@ -68,14 +79,15 @@ const userData = new UserInfo ({
 })
 
 const popupFormEdit = new PopupWithForm ('.popup_edit', (data) => {
-    userData.setUserInfo(data[0],data[1])
+    userData.setUserInfo(data['name-input'],data['job-input'])
     popupFormEdit.close()
 });
 
 editButton.addEventListener('click', () => {
-  editFormValidator.resetError();
-  editFormValidator.unblockSubmitButton(submitButtonEdit);
-  popupFormEdit.inputFields[0].value = userData.getUserInfo().name;
-  popupFormEdit.inputFields[1].value = userData.getUserInfo().job;
+  formValidator.edit.resetError();
+  formValidator.edit.unblockSubmitButton(submitButtonEdit);
+  const inputValues = userData.getUserInfo();
+  nameInput.value = inputValues.name;
+  jobInput.value = inputValues.job;
   popupFormEdit.open()
 });
