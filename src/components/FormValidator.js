@@ -70,16 +70,16 @@ export default class FormValidator {
       evt.preventDefault();
     });
 
-    this.blockSubmitButton(this._submitButton);
+    this.blockSubmitButton();
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
         
         if (this._hasInvalidInput(this._inputList)) {
-          this.blockSubmitButton(this._submitButton);
+          this.blockSubmitButton();
         } else {
-          this.unblockSubmitButton(this._submitButton);
+          this.unblockSubmitButton();
         }
       });
     });

@@ -98,6 +98,49 @@
       <button class="popup__container-btn-close popup__container-btn-close_image" type="button"></button>
     </figure>
   </div>
+  <!-- ***** Popup delete ***** -->
+  <div class="popup popup_delete">
+    <div class="popup__container popup__container_delete">
+      <h3 class="popup__container-title">Вы уверены?</h3>
+      <form class="popup__container-content popup__container-content_delete" action="#" method="delete" name="delete"
+        novalidate>
+      <button 
+        class="popup__container-btn-submit popup__container-btn-submit_delete" 
+        type="submit">Да
+      </button>
+      <button class="popup__container-btn-close" type="button"></button>
+      </form>
+    </div>
+  </div>
+  <!-- ***** Popup update avatar ***** -->
+  <div class="popup popup_avatar">
+    <div class="popup__container popup__container_avatar">
+      <h3 class="popup__container-title">Обновить аватар</h3>
+      <form 
+        class="popup__container-content popup__container-content_update" 
+        action="example.php" 
+        method="post" 
+        name="avatar"
+        novalidate
+      >
+        <input 
+          class="popup__container-input" 
+          id="avatar-link-input" 
+          type="url" 
+          name="avatar-link-input"
+          placeholder="Ссылка на картинку" 
+          required
+        >
+        <span class="avatar-link-input-error popup__container-input-error"></span>
+        <button class="popup__container-btn-submit popup__container-btn-submit_avatar" 
+          type="submit" 
+          disabled>
+          Сохранить
+        </button>
+      </form>
+      <button class="popup__container-btn-close" type="button"></button>
+    </div>
+  </div>
   <!-- Header -->
   <header class="header">
     <img class="header__logo" src="<%=require('./images/logo/logo.svg')%>" alt="Логотип">
@@ -107,7 +150,10 @@
     <!-- Section profile -->
     <section class="profile">
       <div class="profile__container">
-        <img class="profile__image" src="<%=require('./images/profile/JacquesYvesCousteau.jpg')%>" alt="Жак-Ив Кусто">
+        <div class="profile__image-container">
+          <img class="profile__image" src="<%=require('./images/profile/JacquesYvesCousteau.jpg')%>" alt="Жак-Ив Кусто">
+          <img class="profile__update-icon" src="<%=require('./images/vector/update.svg')%>" alt="update icon">
+        </div>
         <div class="profile__info">
           <div>
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -139,7 +185,10 @@
       <button class="cards__btn-trash" type="button"></button>
       <div class="cards__info">
         <h2 class="cards__title"></h2>
-        <button class="cards__btn-like" type="button"></button>
+        <div class="cards__like-container">
+          <button class="cards__btn-like" type="button"></button>
+          <span class="cards__like-counter"></span>
+        </div>
       </div>
     </li>
   </template>

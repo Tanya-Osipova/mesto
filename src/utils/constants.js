@@ -56,6 +56,7 @@ export const nameInput = document.querySelector('#name-input');
 export const jobInput = document.querySelector('#job-input');   
 export const userName = document.querySelector('.profile__name');
 export const userJob = document.querySelector('.profile__job'); 
+export const userImage = document.querySelector('.profile__image'); 
 
 // Add place form selectors
 export const formAdd = document.querySelector('.popup__container_add');  
@@ -66,6 +67,7 @@ export const imageLinkInput = document.querySelector('#img-link-input');
 // Form validator selectors
 export const editForm = document.querySelector('.popup__container-content_edit');
 export const addForm = document.querySelector('.popup__container-content_add');
+export const updateAvatar = document.querySelector('.popup__container-content_update');
 export const selector = {
   inputSelector: '.popup__container-input',
   submitButtonSelector: '.popup__container-btn-submit',

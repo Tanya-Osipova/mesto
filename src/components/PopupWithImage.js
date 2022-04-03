@@ -5,7 +5,6 @@ export default class PopupWithImage extends Popup {
     super(popupSelector);
     this._title = this._popup.querySelector('.popup__container-caption');
     this._image = this._popup.querySelector('.popup__container-modal-image');
-    
   }
    
   open({title, image, alt}) {

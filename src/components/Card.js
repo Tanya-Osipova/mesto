@@ -1,11 +1,16 @@
 export default class Card {
-  constructor(data, cardSelector, handleCardClick) {
-    this._title = data.title;
-    this._image = data.image;
+  constructor(data, cardSelector, handleCardClick, handleDelete, api, userId) {
+    this._title = data.name;
+    this._image = data.link;
     this._alt = data.alt;
+    this._id = data._id;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-    
+    this._handleDelete = handleDelete;
+    this._likes = data.likes.length;
+    this._api = api;
+    this._userId = userId;
+    this._ownerId = data.owner._id;
   }
 
   _getTemplate() {
@@ -24,13 +29,19 @@ export default class Card {
     this._cardImage =  this._element.querySelector('.cards__image');
     this._cardTitle = this._element.querySelector('.cards__title');
     this._likeButton = this._element.querySelector('.cards__btn-like');
+    this._likesCounter = this._element.querySelector('.cards__like-counter');
     this._deleteButton = this._element.querySelector('.cards__btn-trash');
     
-
     this._cardImage.src = this._image;
     this._cardImage.alt = this._title;
     this._cardTitle.textContent = this._title;
-
+    this._likesCounter.textContent = this._likes;
+     
+    if(this._userId === this._ownerId) {
+     console.log(this._deleteButton)
+      this._deleteButton.classList.add('cards__btn-trash_show')
+    }
+  
     this._setEventListeners();
     
     return this._element;
@@ -44,7 +55,7 @@ export default class Card {
 
     
     this._deleteButton.addEventListener('click', () => {
-      this._handleDelete();
+      this._handleDelete.open(this._id)
     });
 
     
@@ -56,10 +67,20 @@ export default class Card {
   
   _handleLike() {
     this._likeButton.classList.toggle('cards__btn-like_active');
-  }
 
-  _handleDelete() {
-    this._element.remove();
+    if(this._likeButton.classList.contains('cards__btn-like_active')) {
+        //dislike
+        this._api.likeCard(this._id)
+          .then(res => {
+            this._likesCounter.textContent = res.likes.length
+          })
+    } else { 
+        this._api.dislikeCard(this._id)
+          .then(res => {
+            this._likesCounter.textContent = res.likes.length
+          })
+      }
   }
 }
+    
 
