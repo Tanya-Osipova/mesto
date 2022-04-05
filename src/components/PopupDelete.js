@@ -4,6 +4,7 @@ export default class PopupDelete extends PopupWithForm {
   constructor(popupSelector,submitForm) {
     super(popupSelector)
     this._submitForm = submitForm;
+    this._id = ''
   }
 
   open(id) {

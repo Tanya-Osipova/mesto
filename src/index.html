@@ -102,7 +102,7 @@
   <div class="popup popup_delete">
     <div class="popup__container popup__container_delete">
       <h3 class="popup__container-title">Вы уверены?</h3>
-      <form class="popup__container-content popup__container-content_delete" action="#" method="delete" name="delete"
+      <form class="popup__container-content popup__container-content_delete" method="delete" name="delete"
         novalidate>
       <button 
         class="popup__container-btn-submit popup__container-btn-submit_delete" 
@@ -151,7 +151,7 @@
     <section class="profile">
       <div class="profile__container">
         <div class="profile__image-container">
-          <img class="profile__image" src="<%=require('./images/profile/JacquesYvesCousteau.jpg')%>" alt="Жак-Ив Кусто">
+          <img class="profile__image" src="" alt="avatar">
           <img class="profile__update-icon" src="<%=require('./images/vector/update.svg')%>" alt="update icon">
         </div>
         <div class="profile__info">
@@ -180,7 +180,7 @@
 
   <!-- Card template -->
   <template class="card-template card-template_type_default">
-    <li class="cards__item">
+    <li class="cards__item" id="">
       <img class="cards__image">
       <button class="cards__btn-trash" type="button"></button>
       <div class="cards__info">

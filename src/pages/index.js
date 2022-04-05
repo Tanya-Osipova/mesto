@@ -22,18 +22,28 @@ import { editForm, addForm, updateAvatar, selector } from '../utils/constants.js
 import { editButton, addButton } from '../utils/constants.js';
 
 
+// Api
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-38',
+  headers: {
+    authorization: 'eded85a4-c499-46c1-8280-75a17fa1cbb9',
+    'Content-Type': 'application/json'
+  }
+}); 
+
+
 // FormValidator.js
 const formValidator = {
   edit: new FormValidator(selector, editForm),
   add: new FormValidator(selector, addForm),
-  update: new FormValidator(selector, updateAvatar)
+  avatar: new FormValidator(selector, updateAvatar)
 }
 formValidator.edit.enableValidation();
 formValidator.add.enableValidation();
-formValidator.update.enableValidation();
+formValidator.avatar.enableValidation();
 
 
-// PopupWithImage.js
+// PopupWithImage
 const imagePopup = new PopupWithImage('.popup_image');
 
 
@@ -46,29 +56,49 @@ function handleCardClick(title, image,alt) {
 // handle delete
 const popupDelete = new PopupDelete('.popup_delete',(cardId) => {
   const promise = api.deleteCard(cardId)
-
+  promise.then(() => {
+    const cardToDelete = document.querySelector(`#${cardId}`)
+    console.log(cardToDelete)
+    cardToDelete.remove()
+  })
   return promise
 });
 
 
-// Create card
-function createCard(item) {
-  const card = new Card(item, '.card-template_type_default', handleCardClick, popupDelete, api, userData.getId());
-  return card.generateCard();
-}
-
-
-// UserInfo.js
+// User Info
 const userData = new UserInfo ({
   userNameSelector: '.profile__name', 
   userJobSelector: '.profile__job',
+  userAvatarSelector: '.profile__image'
 })
 
-const popupFormEdit = new PopupWithForm('.popup_edit', (data) => {
-    userData.setUserInfo(data['name-input'], data['job-input'])
-    const promise = api.updateProfile(data['name-input'], data['job-input'])
+// Get user info
+api.getInfo()
+  .then((res) => {
+    userData.setUserInfo({
+      name: res.name, 
+      job: res.about, 
+      avatar: res.avatar, 
+      _id: res._id
+    });
+  })
+  .catch((err) => {
+    console.log(err); 
+  }); 
+  
 
-    return promise
+// Update profile
+const popupFormEdit = new PopupWithForm('.popup_edit', (data) => {
+  const promise = api.updateProfile(data['name-input'], data['job-input'])
+  promise.then((res) => {
+    userData.setUserInfo({
+      name: res.name, 
+      job: res.about, 
+      avatar: res.avatar, 
+      _id: res._id
+    })
+  })
+  return promise
 });
 
 editButton.addEventListener('click', () => {
@@ -81,46 +111,47 @@ editButton.addEventListener('click', () => {
 });
 
 
-// Api
-const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-38',
-  headers: {
-    authorization: 'eded85a4-c499-46c1-8280-75a17fa1cbb9',
-    'Content-Type': 'application/json'
-  }
-}); 
+
+// Update avatar
+const popupAvatar = new PopupWithForm('.popup_avatar',(data) => {
+  const promise = api.updateAvatar(data['avatar-link-input'])
+    .then(res =>
+      console.log(res))
+  userImage.src = data['avatar-link-input'];
+  formValidator.avatar.blockSubmitButton();
+  return promise
+})
+
+const updateAvatarIcon = document.querySelector('.profile__update-icon');
+updateAvatarIcon.addEventListener('click', () => popupAvatar.open());
+
+
+// Create card
+function createCard(item) {
+  const card = new Card(item, '.card-template_type_default', handleCardClick, popupDelete, api, userData.getUserInfo()._id);
+  return card.generateCard();
+}
+
+// Add Card to Section
+function renderCard(cardItem) {
+  const card = createCard(cardItem)
+  cardSection.addItem(card);
+}
+
+const cardSection = new Section('.cards__list', renderCard);
 
 // Get Initial Cards
 api.getInitialCards()
   .then((result) => {
-    const cardsList = new Section({
-      items: result,
-      renderer: (cardItem) => { 
-        const card = createCard(cardItem)
-        cardsList.addItem(card);
-      }
-    },
-    cardList
-    );
-    cardsList.renderItems(); 
+    console.log(result)
+    cardSection.renderItems(result); 
   })
   .catch((err) => {
     console.log(err); 
   }); 
 
-// Get user info
-api.getInfo()
-  .then((result) => {
-    userData.setUserInfo(result.name, result.about, result.avatar);
-    userData.setId(result._id);
-    userImage.src = result.avatar;
-  
-  })
-  .catch((err) => {
-    console.log(err); 
-  }); 
-  
-// Add card
+
+// Popup Add card
 const popupFormAdd = new PopupWithForm('.popup_add', (data) => {
   const newCard = {
     name: data['img-name-input'],
@@ -131,23 +162,12 @@ const popupFormAdd = new PopupWithForm('.popup_add', (data) => {
   
   formValidator.add.blockSubmitButton();
   const promise = api.addCard(newCard);
+  promise.then((res) => {
+    renderCard(res)
+  })
 
   return promise
 });
 
 addButton.addEventListener('click', () => popupFormAdd.open());
 
-  
-
-// Update avatar
-const popupAvatar = new PopupWithForm('.popup_avatar',(data) => {
-  const promise = api.updateAvatar(data['avatar-link-input'])
-    .then(res =>
-      console.log(res))
-  userImage.src = data['avatar-link-input'];
-  
-  return promise
-})
-
-const updateAvatarIcon = document.querySelector('.profile__update-icon');
-updateAvatarIcon.addEventListener('click', () => popupAvatar.open());

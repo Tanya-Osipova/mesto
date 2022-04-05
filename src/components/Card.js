@@ -36,9 +36,9 @@ export default class Card {
     this._cardImage.alt = this._title;
     this._cardTitle.textContent = this._title;
     this._likesCounter.textContent = this._likes;
+    this._element.id = this._id;
      
     if(this._userId === this._ownerId) {
-     console.log(this._deleteButton)
       this._deleteButton.classList.add('cards__btn-trash_show')
     }
   
