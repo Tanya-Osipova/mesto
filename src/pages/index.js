@@ -42,28 +42,26 @@ formValidator.edit.enableValidation();
 formValidator.add.enableValidation();
 formValidator.avatar.enableValidation();
 
-
 // PopupWithImage
 const imagePopup = new PopupWithImage('.popup_image');
 
-
 // handleCardClick
 function handleCardClick(title, image,alt) {
-  imagePopup.open({title:title, image:image, alt:alt})
+  imagePopup.open({title, image, alt})
 }
-
 
 // handle delete
 const popupDelete = new PopupDelete('.popup_delete',(cardId) => {
   const promise = api.deleteCard(cardId)
   promise.then(() => {
     const cardToDelete = document.querySelector(`#${cardId}`)
-    console.log(cardToDelete)
     cardToDelete.remove()
+  })
+  .catch((err)=> {
+    console.log(err)
   })
   return promise
 });
-
 
 // User Info
 const userData = new UserInfo ({
@@ -72,21 +70,21 @@ const userData = new UserInfo ({
   userAvatarSelector: '.profile__image'
 })
 
-// Get user info
-api.getInfo()
-  .then((res) => {
-    userData.setUserInfo({
-      name: res.name, 
-      job: res.about, 
-      avatar: res.avatar, 
-      _id: res._id
-    });
+Promise.all([api.getUserInfo(), api.getCards()])
+  .then(([user, cards]) => {
+      userData.setUserInfo({
+        name: user.name, 
+        job: user.about, 
+        avatar: user.avatar, 
+        _id: user._id
+      });
+      cardSection.renderItems(cards); 
   })
-  .catch((err) => {
+  .catch(err => {
     console.log(err); 
-  }); 
-  
+  });
 
+  
 // Update profile
 const popupFormEdit = new PopupWithForm('.popup_edit', (data) => {
   const promise = api.updateProfile(data['name-input'], data['job-input'])
@@ -97,6 +95,9 @@ const popupFormEdit = new PopupWithForm('.popup_edit', (data) => {
       avatar: res.avatar, 
       _id: res._id
     })
+  })
+  .catch((err)=> {
+    console.log(err)
   })
   return promise
 });
@@ -110,46 +111,31 @@ editButton.addEventListener('click', () => {
   popupFormEdit.open()
 });
 
-
-
 // Update avatar
 const popupAvatar = new PopupWithForm('.popup_avatar',(data) => {
   const promise = api.updateAvatar(data['avatar-link-input'])
     .then(res =>
-      console.log(res))
-  userImage.src = data['avatar-link-input'];
-  formValidator.avatar.blockSubmitButton();
+      userData.setUserInfo(res)
+    )
+    .catch((err)=> {
+      console.log(err)
+    })
+  
   return promise
 })
 
 const updateAvatarIcon = document.querySelector('.profile__update-icon');
-updateAvatarIcon.addEventListener('click', () => popupAvatar.open());
+updateAvatarIcon.addEventListener('click', () => {
+  formValidator.avatar.blockSubmitButton();
+  popupAvatar.open()
+});
 
 
-// Create card
-function createCard(item) {
+const cardSection = new Section('.cards__list', (item) => {
   const card = new Card(item, '.card-template_type_default', handleCardClick, popupDelete, api, userData.getUserInfo()._id);
-  return card.generateCard();
-}
 
-// Add Card to Section
-function renderCard(cardItem) {
-  const card = createCard(cardItem)
-  cardSection.addItem(card);
-}
-
-const cardSection = new Section('.cards__list', renderCard);
-
-// Get Initial Cards
-api.getInitialCards()
-  .then((result) => {
-    console.log(result)
-    cardSection.renderItems(result); 
-  })
-  .catch((err) => {
-    console.log(err); 
-  }); 
-
+  return card.generateCard()
+});
 
 // Popup Add card
 const popupFormAdd = new PopupWithForm('.popup_add', (data) => {
@@ -160,14 +146,19 @@ const popupFormAdd = new PopupWithForm('.popup_add', (data) => {
     likes: []
   };
   
-  formValidator.add.blockSubmitButton();
   const promise = api.addCard(newCard);
   promise.then((res) => {
-    renderCard(res)
+    cardSection.addItem(res)
+  })
+  .catch((err)=> {
+    console.log(err)
   })
 
   return promise
 });
 
-addButton.addEventListener('click', () => popupFormAdd.open());
+addButton.addEventListener('click', () => {
+  formValidator.add.blockSubmitButton();
+  popupFormAdd.open()
+});
 

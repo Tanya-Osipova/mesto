@@ -15,13 +15,10 @@ export default class Api {
       console.log(obj);
       return obj;
     })
-    .catch((err) => {
-      console.error(err);
-    })
   }
 
   // Get Cards
-  getInitialCards() {
+  getCards() {
     const promise = fetch(`${this._url}/cards`, {
       headers: this._headers
     })
@@ -30,7 +27,7 @@ export default class Api {
   } 
 
   // Get User Info
-  getInfo() {
+  getUserInfo() {
     const promise = fetch(`${this._url}/users/me`, {
       headers: this._headers
     })
