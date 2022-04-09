@@ -13,9 +13,10 @@ export default class PopupDelete extends PopupWithForm {
   }
   
   setEventListeners() {
-    super.setEventListeners();
+    //super.setEventListeners();
     
-    this._popup.addEventListener('submit', () => {
+    this._popup.addEventListener('submit', (evt) => {
+      evt.preventDefault();
       this._submitButton.textContent = 'Удаление...';
       this._submitForm(this._id)
         .then(() => this.close())

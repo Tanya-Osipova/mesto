@@ -50,11 +50,12 @@ function handleCardClick(title, image,alt) {
   imagePopup.open({title, image, alt})
 }
 
+
 // handle delete
 const popupDelete = new PopupDelete('.popup_delete',(cardId) => {
   const promise = api.deleteCard(cardId)
   promise.then(() => {
-    const cardToDelete = document.querySelector(`#${cardId}`)
+    const cardToDelete = document.getElementById(`${cardId}`)
     cardToDelete.remove()
   })
   .catch((err)=> {

@@ -7,7 +7,7 @@ export default class Card {
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._handleDelete = handleDelete;
-    this._likes = data.likes.length;
+    this._likes = data.likes;
     this._api = api;
     this._userId = userId;
     this._ownerId = data.owner._id;
@@ -35,8 +35,13 @@ export default class Card {
     this._cardImage.src = this._image;
     this._cardImage.alt = this._title;
     this._cardTitle.textContent = this._title;
-    this._likesCounter.textContent = this._likes;
+    this._likesCounter.textContent = this._likes.length;
+
     this._element.id = this._id;
+
+    if (this._likes.filter((like) => like._id === this._userId).length > 0) {
+       this._likeButton.classList.add('cards__btn-like_active');
+    }
      
     if(this._userId === this._ownerId) {
       this._deleteButton.classList.add('cards__btn-trash_show')

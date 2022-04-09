@@ -3,8 +3,8 @@
   border-radius: 10px;
   background: #fff;
   color: #000;
-  max-width: 282px;
-  min-height: 361px;
+  width: 282px;
+  height: 361px;
 }
 
 @media screen and (max-width: 600px) {
