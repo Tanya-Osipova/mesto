@@ -1,10 +1,11 @@
-import PopupWithForm from "./PopupWithForm.js";
+import Popup from "./Popup.js";
 
-export default class PopupDelete extends PopupWithForm {
+export default class PopupDelete extends Popup {
   constructor(popupSelector,submitForm) {
     super(popupSelector)
     this._submitForm = submitForm;
     this._id = ''
+    this._submitButton = this._popup.querySelector('.popup__container-btn-submit');
   }
 
   open(id) {
@@ -13,7 +14,7 @@ export default class PopupDelete extends PopupWithForm {
   }
   
   setEventListeners() {
-    //super.setEventListeners();
+    super.setEventListeners();
     
     this._popup.addEventListener('submit', (evt) => {
       evt.preventDefault();
